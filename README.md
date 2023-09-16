@@ -7,12 +7,12 @@ Checks date, that's it.
 ```
 git clone https://github.com/CseeJayey/FPTDateTimeChecker.py.git
 ```
-Run:
-  For windows:
-  ```
-  run.bat
-  ```
-  OSX or Linux:
-  ```
-  run.sh
-  ```
+
+For windows:
+```
+run.bat
+```
+OSX or Linux:
+```
+run.sh
+```
