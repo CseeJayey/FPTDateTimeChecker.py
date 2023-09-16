@@ -33,7 +33,7 @@ brew install python-tk
 run.sh
 ```
 ## Note:
-If either of the scripts work run the program manually by typing:
+If either of the scripts work, run the program manually by typing:
 
 Windows:
 ```
