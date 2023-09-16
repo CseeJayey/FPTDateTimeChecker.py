@@ -34,6 +34,11 @@ run.sh
 ```
 ## Note:
 If either of the scripts work run the program manually by typing:
+Windows:
 ```
 python -u .\DateTimeChecker.py
+```
+OSX or Linux:
+```
+python3 -u .\DateTimeChecker.py
 ```
