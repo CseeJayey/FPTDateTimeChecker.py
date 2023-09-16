@@ -5,17 +5,30 @@ Checks date, that's it.
 
 ### Requirements:
 1. [Python 3x](https://www.python.org/downloads/)
+2. Tkinter 
 
 ### Usage:
 ```
 git clone https://github.com/CseeJayey/FPTDateTimeChecker.py.git
 ```
 
-For windows:
+## Windows:
 ```
 run.bat
 ```
-OSX or Linux:
+
+## OSX or Linux:
+### Install tkinter:
+
+Ubuntu
+```
+sudo apt-get install python3-tk 
+```
+MacOS
+```
+brew install python-tk
+```
+### Run the script:
 ```
 run.sh
 ```
