@@ -41,5 +41,5 @@ python -u .\DateTimeChecker.py
 ```
 OSX or Linux:
 ```
-python3 -u .\DateTimeChecker.py
+python3 -u ./DateTimeChecker.py
 ```
