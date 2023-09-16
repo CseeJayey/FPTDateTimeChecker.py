@@ -19,3 +19,8 @@ OSX or Linux:
 ```
 run.sh
 ```
+## Note:
+If either of the scripts work run the program manually by typing:
+```
+python -u .\DateTimeChecker.py
+```
