@@ -32,4 +32,4 @@ while read -r req; do
 done < requirements.txt
 
 # Run DateTimeChecker.py
-python3 "$(dirname "\$0")/DateTimeChecker.py"
+python3 "$(dirname "\$0")/main.py"
