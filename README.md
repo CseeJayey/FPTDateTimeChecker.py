@@ -17,16 +17,12 @@ git clone https://github.com/CseeJayey/FPTDateTimeChecker.py.git
 run.bat
 ```
 
-## OSX or Linux:
+## Linux:
 ### Install tkinter:
 
 Ubuntu
 ```
 sudo apt-get install python3-tk 
-```
-MacOS
-```
-brew install python-tk
 ```
 ### Run the script:
 ```
@@ -39,7 +35,7 @@ Windows:
 ```
 python -u .\DateTimeChecker.py
 ```
-OSX or Linux:
+Linux:
 ```
 python3 -u ./DateTimeChecker.py
 ```
