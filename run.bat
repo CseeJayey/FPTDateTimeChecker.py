@@ -21,15 +21,8 @@ if not exist requirements.txt (
 )
 
 REM Install requirements from requirements.txt
-for /f "delims==" %%a in (requirements.txt) do (
-    pip show %%a >nul 2>nul
-    if errorlevel 1 (
-        echo Installing %%a...
-        pip install %%a
-    ) else (
-        echo %%a is already installed.
-    )
-)
+echo Checking and installing requirements from requirements.txt...
+pip install -r requirements.txt
 
 REM Run DateTimeChecker.py
 python "%~dp0main.py"
