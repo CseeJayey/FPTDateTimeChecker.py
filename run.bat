@@ -32,4 +32,4 @@ for /f "delims==" %%a in (requirements.txt) do (
 )
 
 REM Run DateTimeChecker.py
-python "%~dp0DateTimeChecker.py"
+python "%~dp0main.py"
