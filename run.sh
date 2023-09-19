@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Check if Python is installed
 python3 --version >/dev/null 2>&1
@@ -8,7 +8,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Check if pip is installed
-pip --version >/dev/null 2>&1
+pip3 --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "pip is not installed. Please install pip and try again."
     exit 1
@@ -21,15 +21,15 @@ if [ ! -f requirements.txt ]; then
 fi
 
 # Install requirements from requirements.txt
-while read -r req; do
-    pip show "$req" >/dev/null 2>&1
+while read -r package; do
+    pip3 show "$package" >/dev/null 2>&1
     if [ $? -ne 0 ]; then
-        echo "Installing $req..."
-        pip install "$req"
+        echo "Installing $package..."
+        pip3 install "$package"
     else
-        echo "$req is already installed."
+        echo "$package is already installed."
     fi
 done < requirements.txt
 
 # Run DateTimeChecker.py
-python3 "$(dirname "\$0")/main.py"
+python3 "${0%/*}/main.py"
