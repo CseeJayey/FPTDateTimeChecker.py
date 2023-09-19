@@ -22,21 +22,7 @@ if [ ! -f "$REQUIREMENTS_FILE" ]; then
 fi
 
 # Install requirements from requirements.txt
-while read -r req; do
-    # Use awk to split the string into package name and version
-    package=$(echo "$req" | awk -F'==' '{print $1}')
-    version=$(echo "$req" | awk -F'==' '{print $2}')
-    # Remove leading and trailing spaces from the version
-    version=$(echo "$version" | awk '{gsub(/^[ \t]+|[ \t]+$/, ""); print}')
-
-    package_info=$(pip3 show "$package")
-    if echo "$package_info" | grep -q "Version: $version" ; then
-        echo "${package}==${version} is already installed."
-    else
-        echo "Installing ${package}..."
-        pip3 install "${package}"
-    fi
-done < "$REQUIREMENTS_FILE"
+pip3 install -r $REQUIREMENTS_FILE
 
 
 # Run main.py
