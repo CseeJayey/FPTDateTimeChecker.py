@@ -17,7 +17,7 @@ git clone https://github.com/CseeJayey/FPTDateTimeChecker.py.git
 run.bat
 ```
 
-##  Linux:
+## Linux:
 ### Install tkinter:
 
 Ubuntu
