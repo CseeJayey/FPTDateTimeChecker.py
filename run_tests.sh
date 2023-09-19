@@ -15,7 +15,7 @@ fi
 REQUIREMENTS_FILE="requirements.txt"
 # Check if requirements.txt exists
 if [ ! -f "$REQUIREMENTS_FILE" ]; then
-    echo "$REQUIREMENTS_FILE not found. Please create a requirements.txt file and try again."
+    echo "$REQUIREMENTS_FILE not found. Please create a $REQUIREMENTS_FILE file and try again."
     exit 1
 fi
 
@@ -29,7 +29,7 @@ while read -r req; do
 
     package_info=$(pip3 show "$package")
     if echo "$package_info" | grep -q "Version: $version" ; then
-        echo "${package} is already installed."
+        echo "${package}==${version} is already installed."
     else
         echo "Installing ${package}..."
         pip3 install "${package}"
