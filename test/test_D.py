@@ -2,6 +2,14 @@ import unittest
 from app.DTCLib import days_in_month, is_valid_date
 
 class TestDaysInMonth(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
     def test_valid_input(self):
         self.assertEqual(days_in_month(2023, 9), 30)
         self.assertEqual(days_in_month(1960, 1), 31)
@@ -22,6 +30,14 @@ class TestDaysInMonth(unittest.TestCase):
 
 
 class TestIsValidDate(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
     def test_valid_date(self):
         self.assertTrue(is_valid_date(2023, 9, 19))
         self.assertTrue(is_valid_date(2020, 2, 29))
