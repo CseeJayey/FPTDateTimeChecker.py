@@ -6,7 +6,9 @@ from customtkinter import CTkEntry
 Config = {
     "window_title": "Date Time Checker",
     "window_size": "600x300",
-    "logo_path": "./app/logo.png",
+    "logo_path0": "./app/images/logo0.png",
+    "logo_path1": "./app/images/logo1.png",
+    "logo_path2": "./app/images/logo2.png",
     "logo_size": (250, 70),
 }
 

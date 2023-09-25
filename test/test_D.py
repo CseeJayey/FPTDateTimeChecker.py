@@ -3,11 +3,11 @@ from app.DTCLib import days_in_month, is_valid_date
 
 class TestDaysInMonth(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(self):
         pass
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDownClass(self):
         pass
 
     def test_valid_input(self):
@@ -31,11 +31,11 @@ class TestDaysInMonth(unittest.TestCase):
 
 class TestIsValidDate(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(self):
         pass
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDownClass(self):
         pass
 
     def test_valid_date(self):

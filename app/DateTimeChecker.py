@@ -2,6 +2,7 @@ from tkinter import messagebox
 import customtkinter
 from PIL import Image
 from app.DTCLib import Config, is_valid_date, get_random_date, tkinter_set_text
+from itertools import cycle
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -21,9 +22,17 @@ class App(customtkinter.CTk):
         self.label_logo = customtkinter.CTkLabel(self, text="Date Time Checker", font=customtkinter.CTkFont(size=30, weight="bold"), text_color="orange")
         self.label_logo.place(x=280, y=30)
         try:
-            image = Image.open(Config.get("logo_path", None))
-            photo = customtkinter.CTkImage(image, size=Config.get("logo_size", None))
-            self.image_label = customtkinter.CTkLabel(self, image=photo, text=None)
+            image0 = Image.open(Config.get("logo_path0", None))
+            image1 = Image.open(Config.get("logo_path1", None))
+            image2 = Image.open(Config.get("logo_path2", None))
+            self.photos = cycle([
+                customtkinter.CTkImage(image0, size=Config.get("logo_size", None)),
+                customtkinter.CTkImage(image1, size=Config.get("logo_size", None)),
+                customtkinter.CTkImage(image2, size=Config.get("logo_size", None))
+            ])
+            self.image = next(self.photos)
+            self.image_label = customtkinter.CTkButton(self, image=self.image, text=None, command=self.change_logo_event,
+                                                        fg_color="transparent", hover=None)
             self.image_label.place(x=10, y=10)
         except FileNotFoundError as e:
             messagebox.showwarning("Warning", f"{e}")
@@ -85,10 +94,14 @@ class App(customtkinter.CTk):
         customtkinter.set_appearance_mode(appearance_mode)
 
     def rand_date_event(self):
-        day, month, year = get_random_date(500)
+        day, month, year = get_random_date(10)
         tkinter_set_text(self.entry_year, year)
         tkinter_set_text(self.entry_month, month)
         tkinter_set_text(self.entry_day, day)
+
+    def change_logo_event(self):
+        self.image = next(self.photos)
+        self.image_label.configure(image=self.image)
 
     def temp_btn_event(self):
         print("Button click! <:O")
