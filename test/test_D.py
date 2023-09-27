@@ -46,7 +46,7 @@ class TestIsValidDate(unittest.TestCase):
     def test_invalid_date(self):
         err = "Date is valid."
         self.assertFalse(is_valid_date(2023, 2, 30), msg=err)
-        self.assertFalse(is_valid_date(2023, -1, 0, msg=err))
+        self.assertFalse(is_valid_date(2023, -1, 0), msg=err)
 
 
     def test_out_of_range_year(self):
