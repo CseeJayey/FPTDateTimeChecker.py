@@ -39,40 +39,55 @@ class TestIsValidDate(unittest.TestCase):
         pass
 
     def test_valid_date(self):
-        self.assertTrue(is_valid_date(2023, 9, 19))
-        self.assertTrue(is_valid_date(2020, 2, 29))
+        err = "Date is invalid."
+        self.assertTrue(is_valid_date(2023, 9, 19), msg=err)
+        self.assertTrue(is_valid_date(2020, 2, 29), msg=err)
 
     def test_invalid_date(self):
-        self.assertFalse(is_valid_date(2023, 2, 30))
-        self.assertFalse(is_valid_date(2023, -1, 0))
+        err = "Date is valid."
+        self.assertFalse(is_valid_date(2023, 2, 30), msg=err)
+        self.assertFalse(is_valid_date(2023, -1, 0, msg=err))
 
 
     def test_out_of_range_year(self):
-        self.assertFalse(is_valid_date(10000, 9, 19))
-        self.assertFalse(is_valid_date(-10000, 9, 19))
+        err = "Year not out of range."
+        self.assertFalse(is_valid_date(10000, 9, 19), msg=err)
+        self.assertFalse(is_valid_date(-10000, 9, 19), msg=err)
+        self.assertFalse(is_valid_date(-1000, 9, 19), msg=err)
 
 
     def test_out_of_range_month(self):
-        self.assertFalse(is_valid_date(2023, 13, 19))
-        self.assertFalse(is_valid_date(2023, 0, 19))
+        err = "Month not out of range."
+        self.assertFalse(is_valid_date(2023, 13, 19), msg=err)
+        self.assertFalse(is_valid_date(2023, 0, 19), msg=err)
 
 
     def test_out_of_range_day(self):
-        self.assertFalse(is_valid_date(2023, 9, 32))
-        self.assertFalse(is_valid_date(2023, 9, 0))
+        err = "Day not out of range."
+        self.assertFalse(is_valid_date(2023, 9, 32), msg=err)
+        self.assertFalse(is_valid_date(2023, 9, 0), msg=err)
 
 
     def test_valid_leapyear(self):
-        self.assertTrue(is_valid_date(2000, 2, 29))
+        err = "Not a leap year."
+        self.assertTrue(is_valid_date(2000, 2, 29), msg=err)
+        self.assertTrue(is_valid_date(2020, 2, 29), msg=err)
 
     def test_invalid_leapyear(self):
-        self.assertFalse(is_valid_date(2023, 2, 29))
+        err = "Is a leap year."
+        self.assertFalse(is_valid_date(2023, 2, 29), msg=err)
+        self.assertFalse(is_valid_date(2025, 2, 29), msg=err)
 
 
     def test_non_numeric_input(self):
-        with self.assertRaises(ValueError):
-            is_valid_date("2032a", "9", "19")
+        err = "Valid input."
+        with self.assertRaises(ValueError, msg=err):
+            is_valid_date("a", "b", "c")
+        with self.assertRaises(ValueError, msg=err):
+            is_valid_date("2032a", "b", "c")
+        with self.assertRaises(ValueError, msg=err):
+            is_valid_date("2032a", "$#", "19.2")
 
 
-if __name__ == '__main__':
-    unittest.main()
+# if __name__ == '__main__':
+#     unittest.main()

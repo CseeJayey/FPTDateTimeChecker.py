@@ -19,8 +19,9 @@ class App(customtkinter.CTk):
         self.logo_grid = customtkinter.CTkLabel(self, text=None)
         self.logo_grid.grid(row=0, column=0, padx=20, pady=(30, 30))
         
-        self.label_logo = customtkinter.CTkLabel(self, text="Date Time Checker", font=customtkinter.CTkFont(size=30, weight="bold"), text_color="orange")
-        self.label_logo.place(x=280, y=30)
+        label_logo_x, label_logo_y = 300, 30
+        self.label_logo = customtkinter.CTkLabel(self, text="Date Time Checker", font=customtkinter.CTkFont(size=30, weight="bold"), text_color=("#1d4bcf", "#ff7d00"))
+        self.label_logo.place(x=label_logo_x, y=label_logo_y)
         try:
             image0 = Image.open(Config.get("logo_path0", None))
             image1 = Image.open(Config.get("logo_path1", None))
