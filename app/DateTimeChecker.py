@@ -8,19 +8,22 @@ customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 class App(customtkinter.CTk):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, master=None):
+        super().__init__(master)
 
         self.resizable(False, False)
         self.title(Config.get("window_title", None))
         self.geometry(Config.get("window_size", None))
+        self.geometry(Config.get("window_position", None))
         
         ########### ROW 0
         self.logo_grid = customtkinter.CTkLabel(self, text=None)
         self.logo_grid.grid(row=0, column=0, padx=20, pady=(30, 30))
         
         label_logo_x, label_logo_y = 300, 30
-        self.label_logo = customtkinter.CTkLabel(self, text="Date Time Checker", font=customtkinter.CTkFont(size=30, weight="bold"), text_color=("#1d4bcf", "#ff7d00"))
+        self.label_logo = customtkinter.CTkLabel(self, text="Date Time Checker", 
+                                                 font=customtkinter.CTkFont(size=30, weight="bold"), 
+                                                 text_color=("#1d4bcf", "#ff7d00"))
         self.label_logo.place(x=label_logo_x, y=label_logo_y)
         try:
             image0 = Image.open(Config.get("logo_path0", None))
@@ -59,7 +62,7 @@ class App(customtkinter.CTk):
 
         self.btn_check_date = customtkinter.CTkButton(self, text="Check", fg_color="#451db5", command=self.check_date_event)
         self.btn_check_date.grid(row=3, column=2, padx=20, pady=10)
-        self.bind('<Return>', lambda event: self.check_date_event())
+        self.bind('<Return>', lambda : self.check_date_event())
         ########### ROW 4 5
         self.lbl_appearance_mode = customtkinter.CTkLabel(self, text="Theme:")
         self.lbl_appearance_mode.grid(row=4, column=0)
@@ -85,11 +88,11 @@ class App(customtkinter.CTk):
         self.entry_month.delete(0, "end")
         self.entry_year.delete(0, "end")
 
-    def check_date_event(self):
+    def check_date_event(self, show_messagebox=True):
         day = self.entry_day.get()
         month = self.entry_month.get()
         year = self.entry_year.get()
-        is_valid_date(year=year, month=month, day=day, show_messagebox=True)
+        return is_valid_date(year=year, month=month, day=day, show_messagebox=show_messagebox)
 
     def change_appearance_event(self, appearance_mode: str):
         customtkinter.set_appearance_mode(appearance_mode)
