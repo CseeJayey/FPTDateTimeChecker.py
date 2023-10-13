@@ -3,50 +3,56 @@ import unittest
 
 from app.DateTimeChecker import App
 
+from customtkinter import CTkEntry
+
+
+def tkinter_set_text(entry: CTkEntry, text: str):
+    entry.delete(0, "end")
+    entry.insert(0, text)
 
 class TestGUI(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
         super().__init__(methodName)
-
+        
         self.override_mb = False 
 
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(self):
         self.app = App()
     
-    def tearDown(self):
+    @classmethod
+    def tearDownClass(self):
         self.app.destroy()
 
 
     def test_check_date_valid(self):
-        self.app.entry_day.insert(0, "29")
-        self.app.entry_month.insert(0, "2")
-        self.app.entry_year.insert(0, "2000")
+        tkinter_set_text(self.app.entry_day, "29")
+        tkinter_set_text(self.app.entry_month, "2")
+        tkinter_set_text(self.app.entry_year, "2000")
         self.app.btn_check_date.event_generate('<Button-1>')
 
-        # self.assertEqual(self.app.check_date_event(show_messagebox=self.override_mb), True)
-        self.assertEqual(self.app.check_date_event(), True)
+        self.assertEqual(self.app.check_date_event(show_messagebox=self.override_mb), True)
 
     def test_check_date_invalid(self):
-        self.app.entry_day.insert(0, "12")
-        self.app.entry_month.insert(0, "13")
-        self.app.entry_year.insert(0, "2000")
+        tkinter_set_text(self.app.entry_day, "12")
+        tkinter_set_text(self.app.entry_month, "13")
+        tkinter_set_text(self.app.entry_year, "2000")
         self.app.btn_check_date.event_generate('<Button-1>')
         
-        # self.assertEqual(self.app.check_date_event(show_messagebox=self.override_mb), False)
-        self.assertEqual(self.app.check_date_event(), False)
+        self.assertEqual(self.app.check_date_event(show_messagebox=self.override_mb), False)
 
     def test_generate_random_date(self):
         self.app.rand_date_event()
         self.app.btn_check_date.event_generate('<Button-1>')
 
-        self.assertIsNotNone(self.app.check_date_event())
+        self.assertIsNotNone(self.app.check_date_event(show_messagebox=self.override_mb))
 
     def test_check_date_general(self):
         self.app.rand_date_event()
         self.app.btn_check_date.event_generate('<Button-1>')
         
-        self.assertIsNotNone(self.app.check_date_event())
+        self.assertIsNotNone(self.app.check_date_event(show_messagebox=self.override_mb))
 
         self.app.clear_entries_event()
 
