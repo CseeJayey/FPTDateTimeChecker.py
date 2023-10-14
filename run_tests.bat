@@ -1,5 +1,16 @@
 @echo off
 
+SET ENV_NAME=.venv
+
+IF EXIST %ENV_NAME% (
+    echo Virtual environment '%ENV_NAME%' already exists.
+) ELSE (
+    echo Creating virtual environment...
+    python -m venv %ENV_NAME%
+)
+
+CALL .\%ENV_NAME%\Scripts\activate
+
 REM Check if Python is installed
 python --version >nul 2>nul
 if errorlevel 1 (

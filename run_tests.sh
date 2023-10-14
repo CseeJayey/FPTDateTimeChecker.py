@@ -1,5 +1,16 @@
 #!/bin/bash
 
+ENV_NAME=".venv"
+
+if [ -d "$ENV_NAME" ]; then
+    echo "Virtual environment '$ENV_NAME' already exists."
+else
+    echo "Creating virtual environment..."
+    python3 -m venv $ENV_NAME
+fi
+
+source $ENV_NAME/bin/activate
+
 # Check if Python3 is installed
 if ! command -v python3 > /dev/null 2>&1; then
     echo "Python3 is not installed. Please install Python3 and try again."
