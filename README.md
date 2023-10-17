@@ -29,7 +29,7 @@ sudo apt-get install python3-tk
 run.sh
 ```
 ## Note:
-If either of the scripts work, run the program manually by typing:
+If neither of the scripts work, run the program manually by typing:
 
 Windows:
 ```
