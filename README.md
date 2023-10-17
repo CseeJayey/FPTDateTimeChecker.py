@@ -18,13 +18,6 @@ run.bat
 ```
 
 ## Linux:
-### Install tkinter:
-
-Ubuntu
-```
-sudo apt-get install python3-tk 
-```
-### Run the script:
 ```
 run.sh
 ```
